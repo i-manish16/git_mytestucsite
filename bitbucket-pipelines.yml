@@ -1,0 +1,11 @@
+pipelines:
+  default:
+    - step:
+        name: Sync GitHub Mirror
+        image: alpine/git:latest
+        clone:
+          enabled: false
+        script:
+          - git clone --bare https://mytestucsite-admin@bitbucket.org/mytestucsite/ucawstest.git
+          - cd ucawstest.git
+          - git push --mirror https://github.com/ravitqm/ucawsgit.git
